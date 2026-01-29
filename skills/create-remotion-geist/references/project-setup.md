@@ -18,6 +18,7 @@ Complete file templates for a Geist Remotion video project.
     "@geist-ui/icons": "^1.0.2",
     "@remotion/cli": "^4.0.0",
     "@remotion/tailwind": "^4.0.0",
+    "prism-react-renderer": "^2.3.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "remotion": "^4.0.0"

@@ -19,6 +19,7 @@ Create Remotion videos styled with Vercel's Geist design system - dark backgroun
 1. **NEVER use emojis** - Use proper Geist icons from `@geist-ui/icons` package
 2. **Use official brand assets** - Download from official sources, don't hand-craft SVGs
 3. **Entry point must be .tsx** - Use `src/index.tsx` with `registerRoot()`, not `.ts`
+4. **Use prism-react-renderer for code** - Do NOT use regex-based syntax highlighting
 
 ## Quick Start
 
@@ -123,6 +124,7 @@ export function MyScene() {
 
 - `references/project-setup.md` - Complete file templates
 - `references/geist-icons.md` - **Icons and brand assets (MUST READ)**
+- `references/code-blocks.md` - **Syntax-highlighted code blocks (use prism-react-renderer)**
 - `references/geist-colors.md` - Full 10-step color scale
 - `references/geist-typography.md` - All typography classes with specs
 - `references/geist-components.md` - Component props and patterns
