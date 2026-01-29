@@ -6,15 +6,16 @@ Complete file templates for a Geist Remotion video project.
 
 ```json
 {
-  "name": "@vercel/geist-video",
+  "name": "geist-video",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "start": "remotion studio",
-    "build": "remotion render GeistDesignSystem out/video.mp4",
-    "render": "remotion render GeistDesignSystem out/video.mp4"
+    "build": "remotion render MainVideo out/video.mp4",
+    "render": "remotion render MainVideo out/video.mp4"
   },
   "dependencies": {
+    "@geist-ui/icons": "^1.0.2",
     "@remotion/cli": "^4.0.0",
     "@remotion/tailwind": "^4.0.0",
     "react": "^18.2.0",
@@ -54,12 +55,13 @@ module.exports = {
           400: '#737373', 500: '#525252', 600: '#404040',
           700: '#262626', 800: '#171717', 900: '#0a0a0a', 1000: '#000000'
         },
-        blue: { 500: '#3b82f6', 600: '#2563eb' },
-        red: { 500: '#ef4444' },
-        amber: { 500: '#f59e0b' },
-        green: { 500: '#22c55e' },
-        violet: { 500: '#8b5cf6' },
-        cyan: { 500: '#06b6d4' },
+        // Semantic colors - success=green, error=red, warning=amber, info=blue
+        blue: { 500: '#3b82f6', 600: '#2563eb', 700: '#0070F3' },
+        red: { 500: '#ef4444', 700: '#E5484D' },
+        amber: { 500: '#f59e0b', 700: '#FFB224' },
+        green: { 500: '#22c55e', 700: '#46A758' },  // Success color
+        violet: { 500: '#8b5cf6', 700: '#8B5CF6' },
+        cyan: { 500: '#06b6d4', 700: '#06B6D4' },
       },
       fontFamily: {
         sans: ['Geist', 'sans-serif'],
@@ -109,9 +111,20 @@ module.exports = {
 }
 ```
 
-## src/index.ts
+## src/index.tsx (Entry Point)
 
-```typescript
+**IMPORTANT:** The entry point must be `.tsx` (not `.ts`) and must call `registerRoot()`.
+
+```tsx
+import { registerRoot } from 'remotion';
+import { RemotionRoot } from './Root';
+
+registerRoot(RemotionRoot);
+```
+
+## src/Root.tsx (Composition Definitions)
+
+```tsx
 import { Composition } from 'remotion';
 import { MainVideo } from './MainVideo';
 import './styles.css';
@@ -119,9 +132,9 @@ import './styles.css';
 export const RemotionRoot = () => {
   return (
     <Composition
-      id="GeistDesignSystem"
+      id="MainVideo"
       component={MainVideo}
-      durationInFrames={45 * 30}  // 45 seconds
+      durationInFrames={45 * 30}  // 45 seconds at 30fps
       fps={30}
       width={1920}
       height={1080}
@@ -170,12 +183,15 @@ export function springIn(frame: number, fps: number, delay = 0) {
 
 ## src/components/VercelLogo.tsx
 
+**NOTE:** For official brand assets, download from https://assets.vercel.com/raw/upload/front/press/vercel-assets.zip
+See `references/geist-icons.md` for more brand asset download links.
+
 ```tsx
 type VercelLogoProps = { size?: number; color?: string };
 
 export function VercelLogo({ size = 80, color = 'white' }: VercelLogoProps) {
   return (
-    <svg width={size} height={size} viewBox="0 0 76 65" fill="none">
+    <svg width={size} height={size * 0.87} viewBox="0 0 76 65" fill="none">
       <path d="M37.5274 0L75.0548 65H0L37.5274 0Z" fill={color} />
     </svg>
   );

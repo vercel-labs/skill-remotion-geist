@@ -2,6 +2,8 @@
 
 Key props and patterns for representing Geist components in Remotion videos.
 
+**IMPORTANT:** Never use emoji characters. Use icons from `@geist-ui/icons` package.
+
 ## Button
 
 ```tsx
@@ -35,11 +37,13 @@ Modal.Modal → Modal.Body → Modal.Header → Modal.Title
 
 **Visual representation:**
 ```tsx
+import { X } from '@geist-ui/icons';
+
 <div className="bg-background-100 border border-gray-400 rounded-lg shadow-2xl" style={{ width: 400 }}>
   {/* Header */}
   <div className="flex items-center justify-between px-6 py-4 border-b border-gray-400">
     <span className="text-white font-semibold text-xl">Modal Title</span>
-    <span className="text-gray-500">✕</span>
+    <X size={20} color="#737373" />
   </div>
   {/* Content */}
   <div className="px-6 py-6 text-gray-400">Content goes here...</div>
@@ -59,22 +63,24 @@ fill: boolean  // fills background
 size: 'xSmall' | 'small' | 'mediumSmall' | 'large'
 ```
 
-**Icons:** success=CheckCircle (blue), error=Stop (red), warning=Warning (amber)
+**Icons:** success=CheckCircle (green), error=XCircle (red), warning=AlertTriangle (amber)
 
 **Visual representation:**
 ```tsx
+import { AlertTriangle, CheckCircle } from '@geist-ui/icons';
+
 // Warning note
 <div className="flex items-center gap-4 px-6 py-4 rounded-lg"
-  style={{ backgroundColor: '#f59e0b15', border: '1px solid #f59e0b40' }}>
-  <span>⚠</span>
-  <span className="text-amber-500">Warning message</span>
+  style={{ backgroundColor: '#FFB22415', border: '1px solid #FFB22440' }}>
+  <AlertTriangle size={20} color="#FFB224" />
+  <span className="text-amber-700">Warning message</span>
 </div>
 
-// Success note (uses BLUE)
+// Success note (uses GREEN)
 <div className="flex items-center gap-4 px-6 py-4 rounded-lg"
-  style={{ backgroundColor: '#3b82f615', border: '1px solid #3b82f640' }}>
-  <span>✓</span>
-  <span className="text-blue-500">Success message</span>
+  style={{ backgroundColor: '#46A75815', border: '1px solid #46A75840' }}>
+  <CheckCircle size={20} color="#46A758" />
+  <span className="text-green-700">Success message</span>
 </div>
 ```
 
@@ -107,10 +113,12 @@ size: 'lg' | 'md' | 'sm'
 ## Checkbox
 
 ```tsx
+import { Check } from '@geist-ui/icons';
+
 // Checked
 <div className="flex items-center gap-3">
-  <div className="w-5 h-5 rounded border-2 border-blue-500 bg-blue-500 flex items-center justify-center">
-    <span className="text-white text-xs">✓</span>
+  <div className="w-5 h-5 rounded border-2 border-green-700 bg-green-700 flex items-center justify-center">
+    <Check size={12} color="white" />
   </div>
   <span className="text-white">Remember me</span>
 </div>
@@ -142,9 +150,11 @@ size: 'lg' | 'md' | 'sm'
 ## Select
 
 ```tsx
+import { ChevronDown } from '@geist-ui/icons';
+
 <div className="bg-background-100 border border-gray-400 rounded-md px-4 py-3 text-gray-400 flex justify-between items-center">
   <span>Select option...</span>
-  <span>▼</span>
+  <ChevronDown size={16} color="#737373" />
 </div>
 ```
 
@@ -180,8 +190,10 @@ size: 'lg' | 'md' | 'sm'
 ## Toast
 
 ```tsx
+import { CheckCircle } from '@geist-ui/icons';
+
 <div className="flex items-center gap-3 px-5 py-3 rounded-lg bg-background-200 border border-gray-400 shadow-lg">
-  <span className="text-blue-500">✓</span>  {/* Success = blue */}
+  <CheckCircle size={18} color="#46A758" />  {/* Success = green */}
   <span className="text-white text-sm">Operation completed</span>
 </div>
 ```
@@ -190,7 +202,7 @@ size: 'lg' | 'md' | 'sm'
 
 ```tsx
 <div className="flex items-center gap-2">
-  <div className="w-2 h-2 rounded-full bg-blue-500" />  {/* Success = blue */}
+  <div className="w-2 h-2 rounded-full bg-green-700" />  {/* Success = green */}
   <span className="text-gray-300 text-sm">Online</span>
 </div>
 ```

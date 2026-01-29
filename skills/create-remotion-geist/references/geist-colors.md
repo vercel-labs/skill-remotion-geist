@@ -2,6 +2,8 @@
 
 10-step scale from 100 (lightest) to 1000 (darkest). Uses CSS variables `--ds-{color}-{step}`.
 
+**IMPORTANT:** Success = Green, NOT Blue. Blue is for info/accent.
+
 ## Gray Scale
 
 | Step | Light Theme | Dark Theme | Usage |
@@ -26,23 +28,25 @@
 
 ## Semantic Colors
 
-| Type | Primary (700) | Usage |
-|------|---------------|-------|
-| error | #E5484D (red) | Error states, destructive |
-| warning | #FFB224 (amber) | Caution, attention |
-| success | #0070F3 (blue) | **Success uses BLUE** |
-| secondary | #737373 (gray) | Neutral, muted |
-| violet | #8B5CF6 | Accent, special |
-| cyan | #06B6D4 | Accent, special |
+| Type | CSS Variable | Value | Usage |
+|------|--------------|-------|-------|
+| success | --ds-green-700 | #46A758 | Success states |
+| error | --ds-red-700 | #E5484D | Error states, destructive |
+| warning | --ds-amber-700 | #FFB224 | Caution, attention |
+| info | --ds-blue-700 | #0070F3 | Informational, accent |
+| secondary | --ds-gray-400 | #737373 | Neutral, muted |
+| violet | --ds-violet-700 | #8B5CF6 | Accent, special |
+| cyan | --ds-cyan-700 | #06B6D4 | Accent, special |
 
 ## Brand Colors
 
 ```css
---geist-success: #0070F3;    /* Blue, not green */
---geist-error: #EE0000;
---geist-warning: #F5A623;
---geist-cyan: #50E3C2;
---geist-violet: #7928CA;
+--geist-success: #46A758;    /* Green */
+--geist-error: #E5484D;      /* Red */
+--geist-warning: #FFB224;    /* Amber */
+--geist-info: #0070F3;       /* Blue */
+--geist-cyan: #06B6D4;
+--geist-violet: #8B5CF6;
 ```
 
 ## Blue Scale (Success/Info)
